@@ -21,6 +21,7 @@ import java.util.List;
 public class UploadBean  implements Serializable{
 
     private UploadedFile file;
+
     private File newUploadedFile;
     private FacesContext context;
 
@@ -39,9 +40,9 @@ public class UploadBean  implements Serializable{
     public void upload(){
         byte[] contentInByteFormat = file.getContents();
         String fullPath = file.getFileName();
-        String aux [] = fullPath.split("\\\\");
 
-        String name = aux[aux.length-1];
+        String aux[] = fullPath.split("\\\\");
+        String name = aux[aux.length - 1];
 
         newUploadedFile.setFilename(name);
         newUploadedFile.setContent(contentInByteFormat);
@@ -52,7 +53,6 @@ public class UploadBean  implements Serializable{
         } catch (PSQLException e) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Something went wrong"));
         }
-        
     }
 
     public UploadedFile getFile() {
