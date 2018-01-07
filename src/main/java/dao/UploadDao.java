@@ -19,8 +19,16 @@ public class UploadDao implements IUploadDao {
     }
 
     @Override
-    public List<File> getUploadedFiles() {
+    public List<File> getUploadedFiles(){
         Query query = entityManager.createQuery("SELECT f FROM File f ");
         return query.getResultList(); //???????????
     }
+
+    @Override
+    public void deleteFile(int id) throws PSQLException {
+        File toDeleteFile = entityManager.find(File.class,id);
+        entityManager.remove(toDeleteFile);
+    }
+
+
 }

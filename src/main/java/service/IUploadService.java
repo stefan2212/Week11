@@ -11,6 +11,8 @@ import java.util.List;
 public interface IUploadService {
     void addFiles(File newFile) throws PSQLException;
 
+    void delete(int id) throws PSQLException;
+
     List<String> getUploadedFiles();
 
 }

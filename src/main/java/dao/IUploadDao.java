@@ -13,4 +13,6 @@ public interface IUploadDao {
 
     public List<File> getUploadedFiles();
 
+    void deleteFile(int id)  throws PSQLException;
+
 }

@@ -15,11 +15,16 @@ public class UploadService implements IUploadService {
     @EJB
     private IUploadDao iUploadDao;
 
-
     @Override
     public void addFiles(File newFile) throws PSQLException {
         iUploadDao.addFile(newFile);
     }
+
+    @Override
+    public void delete(int id) throws PSQLException {
+        iUploadDao.deleteFile(id);
+    }
+
 
     @Override
     public List<String> getUploadedFiles() {
@@ -29,6 +34,7 @@ public class UploadService implements IUploadService {
         for(File file : listOfFiles) {
             listOfFileNames.add(file.getFilename());
         }
+
         return listOfFileNames;
     }
 }
